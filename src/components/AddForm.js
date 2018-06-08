@@ -16,7 +16,7 @@ const AddForm = (props) => (
   <TextInput style={{height: 40}} placeholder="Venue City"
   onChangeText={(event) => props.handleInput("venueCity", event)}/>
   <Picker style={{height: 40}}
-  onChangeText={(event) => props.handleInput("venueState", event)}>
+  onValueChange={(event) => props.handleInput("venueState", event)}>
     <Picker.Item label="AK" value="AK"/>
     <Picker.Item label="AL" value="AL"/>
     <Picker.Item label="AR" value="AR"/>

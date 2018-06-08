@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action) {
         rows: action.rows
     }
   }
-  case types.HANDLE_DATA: {
+  case types.HANDLE_INPUT: {
     let form = state.form;
     form[action.field] = action.value;
     return {
@@ -28,7 +28,7 @@ export default function reducer(state = initialState, action) {
   }
   case types.ADD: {
     let newRows = [...state.rows];
-    newRows.push(action.item);
+    newRows.push(action.event);
     return {
       ...state,
       rows: newRows

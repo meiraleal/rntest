@@ -4,9 +4,8 @@ import Event from './Event';
 
 const EventList = (props) => (<View>
     <FlatList
-    data={props.rows}
+    data={props.rows.reverse()}
     renderItem={Event}
-    keyExtractor={(item) => item.name}
     />
   </View>);
 

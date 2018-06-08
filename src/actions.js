@@ -27,10 +27,10 @@ export const fetchData = () => {
 export const addEvent = () => {
   return ((dispatch, getState) => {
     const state = getState();
-    const item = state.form;
+    const event = state.form;
     dispatch({
       type: ADD,
-      row: item
+      event
     });
   });
 };
