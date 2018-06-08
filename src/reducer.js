@@ -1,7 +1,13 @@
 import * as types from './ActionTypes';
 
 const initialState = {
-  rows: []
+  rows: [],
+  form: {
+    name: null,
+    date: null,
+    venueCity: null,
+    venueState: null
+  }
 };
 
 export default function reducer(state = initialState, action) {
@@ -12,7 +18,23 @@ export default function reducer(state = initialState, action) {
         rows: action.rows
     }
   }
-    default:
-      return state
+  case types.HANDLE_DATA: {
+    let form = state.form;
+    form[action.field] = action.value;
+    return {
+      ...state,
+      ...form
+    }
+  }
+  case types.ADD: {
+    let newRows = [...state.rows];
+    newRows.push(action.item);
+    return {
+      ...state,
+      rows: newRows
+    }
+  }
+  default:
+    return state
   }
 };

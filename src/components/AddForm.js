@@ -1,15 +1,22 @@
 import React from 'react';
 import {Picker, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 
-const AddForm = () => (<View style={styles.form}>
+const AddForm = (props) => (
+  <View style={styles.form}>
   <Text>Event Information</Text>
-  <TextInput style={{height: 40}} placeholder="Event Name"/>
-  <TextInput style={{height: 40}} placeholder="Date"/>
-  <TextInput style={{height: 40}} placeholder="Time"/>
+  <TextInput onChangeText={(event) => props.handleInput("name", event)}
+  style={{height: 40}} placeholder="Event Name"/>
+  <TextInput style={{height: 40}} placeholder="Date"
+  onChangeText={(event) => props.handleInput("date", event)}/>
+  <TextInput style={{height: 40}} placeholder="Time"
+  onChangeText={(event) => props.handleInput("time", event)}/>
   <Text>Venue Information</Text>
-  <TextInput style={{height: 40}} placeholder="Venue Name"/>
-  <TextInput style={{height: 40}} placeholder="Venue City"/>
-  <Picker style={{height: 40}}>
+  <TextInput style={{height: 40}} placeholder="Venue Name"
+  onChangeText={(event) => props.handleInput("venueName", event)}/>
+  <TextInput style={{height: 40}} placeholder="Venue City"
+  onChangeText={(event) => props.handleInput("venueCity", event)}/>
+  <Picker style={{height: 40}}
+  onChangeText={(event) => props.handleInput("venueState", event)}>
     <Picker.Item label="AK" value="AK"/>
     <Picker.Item label="AL" value="AL"/>
     <Picker.Item label="AR" value="AR"/>
@@ -64,7 +71,8 @@ const AddForm = () => (<View style={styles.form}>
   </Picker>
   <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
     <TouchableOpacity style={styles.button}><Text>Cancel</Text></TouchableOpacity>
-    <TouchableOpacity style={styles.button}><Text>Add Event</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.button}
+    onPress={props.addEvent}><Text>Add Event</Text></TouchableOpacity>
   </View>
 </View>);
 

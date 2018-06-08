@@ -12,7 +12,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import {fetchData} from '../actions'
+import {fetchData, addEvent, handleInput} from '../actions'
 import Events from './Events';
 
 type Props = {};
@@ -22,13 +22,15 @@ class App extends Component<Props> {
     this.props.fetchData();
   }
   render() {
-    return (<Events rows={this.props.rows}/>);
+    return (<Events rows={this.props.rows}
+      handleInput={this.props.handleInput}
+      addEvent={this.props.addEvent}/>);
   }
 }
 
 const connectedApp = connect(
   state => ({rows: state.rows}),
-  { fetchData },
+  { fetchData, addEvent, handleInput },
 )(App);
 
 export default connectedApp;
